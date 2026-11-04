@@ -1,6 +1,8 @@
 # Asks for a coordinate name, updates an existing record or adds a new one. 
 # Uses try statements for error handling and input validation.
+
 def add_or_update_coords(coordinates):
+    coord_updated = False
     coordname = input("Coordinate name: ").strip()
 
     if coordname == "":
