@@ -1,0 +1,32 @@
+{
+  "Pine_1": {
+    "coordname": "Pine_1",
+    "latitude": 46.8705,
+    "longitude": -113.994,
+    "order": 1
+  },
+  "River_2": {
+    "coordname": "River_2",
+    "latitude": 46.872,
+    "longitude": -113.992,
+    "order": 2
+  },
+  "Stone_3": {
+    "coordname": "Stone_3",
+    "latitude": 46.869,
+    "longitude": -113.996,
+    "order": 3
+  },
+  "New1": {
+    "coordname": "New1",
+    "latitude": 77.0,
+    "longitude": 77.0,
+    "order": 4
+  },
+  "New2": {
+    "coordname": "New2",
+    "latitude": 67.987,
+    "longitude": 111.1111,
+    "order": 5
+  }
+}
