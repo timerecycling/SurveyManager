@@ -1,0 +1,20 @@
+{
+  "Tree1": {
+    "coordname": "Tree1",
+    "latitude": 58.432,
+    "longitude": -130.332,
+    "order": 1
+  },
+  "Rock1": {
+    "coordname": "Rock1",
+    "latitude": 58.102,
+    "longitude": -130.333,
+    "order": 2
+  },
+  "Creek1": {
+    "coordname": "Creek1",
+    "latitude": 58.631,
+    "longitude": -131.832,
+    "order": 3
+  }
+}
