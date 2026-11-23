@@ -21,10 +21,17 @@ How can we produce useful survey products using a simple python program?
 
 # Files 
 - 'main.py' - main menu loop
-- 'add_or_update_coords.py' - adds or updates coordinate entries in memory
-- 'load_data.py' - loads data from a JSON file. WARNING: This replaces the coordinates in memory
-- 'save_data.py' - saves data to a JSON file. Write or append and select specific entries from memory (or all)
-- 'view_coords.py' - prints desired coordinates
+- 'calc_area.py' - calculates area of a polygon from three or more coordinate pairs.
+- 'calc_dist.py' - calculates distances from two or more coordinate pairs.
+- 'create_state.py' - creates the state dictionary structure for memory.
+- 'input_coords.py' - prompts the user to input coordinate pairs. can overwrite existing pairs.
+- 'list_data_files.py' - called by 'save_data.py' to enumerate the data directory for the program.
+- 'load_data.py' - loads data from a JSON file. WARNING: This replaces the coordinates in memory.
+- 'save_data.py' - saves data to a JSON file. Write or append and select specific entries from memory (or all).
+- 'read_survey_file.py' - called by 'save_data.py' to read a selected JSON file pending write to detect malformed data.
+- 'select_coordinates.py' - called when coordinates must be chosen such as in both calc_X.py functions.
+- 'view_coords.py' - prints desired coordinates in a table format
+- 'write_survey_file.py' - called by 'save_data.py' to write data to the desired file. 
 
 # Author
 Jesse
