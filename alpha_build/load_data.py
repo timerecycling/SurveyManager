@@ -14,7 +14,7 @@ def load_data(filename=None):
 
         if filename == "":
             print("A filename or path is required.")
-            return None
+            return None, None
 
     if not os.path.isabs(filename) and os.path.dirname(filename) == "":
         filename = os.path.join(os.path.dirname(__file__), filename)
@@ -24,15 +24,15 @@ def load_data(filename=None):
             coordinates = json.load(coordinate_file)
     except FileNotFoundError:
         print(f"File not found: {filename}")
-        return None
+        return None, None
     except (PermissionError, OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
         print(f"Could not read {filename}: {error}")
-        return None
+        return None, None
 
     if not isinstance(coordinates, dict):
         print(f"A coordinate file must contain a JSON object: {filename}")
-        return None
+        return None, None
 
     coordinate_label = "coordinate" if len(coordinates) == 1 else "coordinates"
     print(f"Successfully loaded {len(coordinates)} {coordinate_label} from {filename}.")
-    return coordinates
+    return coordinates, filename

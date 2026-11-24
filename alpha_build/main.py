@@ -32,7 +32,10 @@ def main():
         elif choice == "4":
             print("Geofence is not yet implemented.")
         elif choice == "5":
-            load_data(state)
+            data, fname = load_data()
+            if data:
+                state["memory"] = data
+                state["loaded_filename"] = fname
         elif choice == "6":
             save_data(state)
         elif choice == "7":

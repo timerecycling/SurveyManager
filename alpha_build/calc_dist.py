@@ -1,39 +1,28 @@
 import math
-
 from select_coordinates import select_coordinates
 
+def haversine_distance(coord1, coord2):
+    """Calculates Haversine distance between two points in meters."""
+    earth_radius_meters = 6371008.8
+    lat1, lon1 = math.radians(coord1["latitude"]), math.radians(coord1["longitude"])
+    lat2, lon2 = math.radians(coord2["latitude"]), math.radians(coord2["longitude"])
+    
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    
+    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return earth_radius_meters * c
 
 def calc_dist(state):
     """Sum great-circle distances between consecutive selected coordinates."""
     coordinates = select_coordinates(state, 2, "distance calculation")
-
     if len(coordinates) < 2:
         return None
 
-    earth_radius_meters = 6371008.8
     total_distance = 0.0
-
-    for index in range(len(coordinates) - 1):
-        first = coordinates[index]
-        second = coordinates[index + 1]
-        first_latitude = math.radians(first["latitude"])
-        second_latitude = math.radians(second["latitude"])
-        latitude_difference = second_latitude - first_latitude
-        longitude_difference = math.radians(
-            second["longitude"] - first["longitude"]
-        )
-        haversine_value = (
-            math.sin(latitude_difference / 2) ** 2
-            + math.cos(first_latitude)
-            * math.cos(second_latitude)
-            * math.sin(longitude_difference / 2) ** 2
-        )
-        haversine_value = min(1.0, max(0.0, haversine_value))
-        central_angle = 2 * math.atan2(
-            math.sqrt(haversine_value),
-            math.sqrt(1 - haversine_value),
-        )
-        total_distance += earth_radius_meters * central_angle
+    for i in range(len(coordinates) - 1):
+        total_distance += haversine_distance(coordinates[i], coordinates[i+1])
 
     if total_distance >= 1000:
         print(f"Total distance: {total_distance / 1000:.3f} km")
